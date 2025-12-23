@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://dpyayp716k602"]
+[gd_scene load_steps=22 format=3 uid="uid://dpyayp716k602"]
 
 [ext_resource type="PackedScene" uid="uid://bo8l5viiftgdh" path="res://scenes/player.tscn" id="1_uwrxv"]
 [ext_resource type="Texture2D" uid="uid://dl7r6gbtdhvk5" path="res://assets/background/Assets.png" id="2_lbhrr"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://twvh3n7rybix" path="res://assets/background/Background_2.png" id="5_p57ef"]
 [ext_resource type="Texture2D" uid="uid://dv5chrli7elor" path="res://assets/background/Background_1.png" id="6_u5sy4"]
 [ext_resource type="PackedScene" uid="uid://bxynyugjuq3io" path="res://scenes/platform.tscn" id="7_u5sy4"]
+[ext_resource type="PackedScene" uid="uid://der84ep683ffs" path="res://scenes/killzone.tscn" id="9_0tnpc"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_p57ef"]
 texture = ExtResource("2_lbhrr")
@@ -1421,6 +1422,10 @@ _data = {
 &"platform-move": SubResource("Animation_gee14")
 }
 
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_vtaks"]
+normal = Vector2(0.016258918, -0.9998678)
+distance = -108.51935
+
 [node name="Game" type="Node2D"]
 position = Vector2(-82, 6)
 
@@ -1432,6 +1437,7 @@ scale = Vector2(0.47, 0.47)
 position = Vector2(345, -136.66672)
 scale = Vector2(0.6, 0.583)
 zoom = Vector2(1.8, 1.687)
+limit_bottom = 850
 position_smoothing_enabled = true
 
 [node name="TileMap1" type="TileMap" parent="."]
@@ -1484,3 +1490,12 @@ libraries = {
 &"": SubResource("AnimationLibrary_vtaks")
 }
 autoplay = "platform-move"
+
+[node name="killzone" parent="." instance=ExtResource("9_0tnpc")]
+position = Vector2(-392, 544)
+scale = Vector2(0.47, 0.47)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="killzone"]
+position = Vector2(2174.468, 114.893616)
+scale = Vector2(3, 3)
+shape = SubResource("WorldBoundaryShape2D_vtaks")
