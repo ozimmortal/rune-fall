@@ -2,10 +2,12 @@ extends Area2D
 
 
 
-var Coin = 0
+@onready var game_manager: Node = %GameManager
+
 
 
 func _on_body_entered(body: Node2D) -> void:
 	if body.name == "Player":
-		Coin += 1
+		game_manager.add_point()
+		
 		queue_free()
