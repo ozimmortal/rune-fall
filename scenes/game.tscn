@@ -13,6 +13,8 @@
 [ext_resource type="PackedScene" uid="uid://f6p6jsn7h5aq" path="res://scenes/scorpion.tscn" id="10_vtaks"]
 [ext_resource type="PackedScene" uid="uid://dqt46s2u5d3ry" path="res://scenes/coin.tscn" id="11_kvpfn"]
 
+[sub_resource type="LabelSettings" id="LabelSettings_dinhu"]
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_p57ef"]
 texture = ExtResource("2_lbhrr")
 2:0/0 = 0
@@ -1736,8 +1738,6 @@ distance = -108.51935
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vtaks"]
 size = Vector2(63, 20)
 
-[sub_resource type="LabelSettings" id="LabelSettings_dinhu"]
-
 [node name="Level 1" type="Node2D"]
 position = Vector2(-82, 6)
 
@@ -1756,6 +1756,18 @@ scale = Vector2(0.6, 0.583)
 zoom = Vector2(1.8, 1.687)
 limit_bottom = 850
 position_smoothing_enabled = true
+
+[node name="label" type="Node" parent="Player/Camera2D"]
+
+[node name="score" type="Label" parent="Player/Camera2D/label"]
+unique_name_in_owner = true
+offset_left = 147.0
+offset_top = 185.0
+offset_right = 1493.0
+offset_bottom = 308.0
+label_settings = SubResource("LabelSettings_dinhu")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="TileMap1" type="TileMap" parent="."]
 position = Vector2(6, -3)
@@ -1827,16 +1839,6 @@ position = Vector2(402, 607)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="trap"]
 position = Vector2(4.5, 0)
 shape = SubResource("RectangleShape2D_vtaks")
-
-[node name="label" type="Node" parent="."]
-
-[node name="score" type="Label" parent="label"]
-unique_name_in_owner = true
-offset_left = 1035.0
-offset_top = 260.0
-offset_right = 2381.0
-offset_bottom = 383.0
-label_settings = SubResource("LabelSettings_dinhu")
 
 [node name="coins" type="Node" parent="."]
 
